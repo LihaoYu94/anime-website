@@ -1,0 +1,33 @@
+
+<?php
+	$db = mysqli_connect('fa17-cs411-03.cs.illinois.edu', 'root@localhost', 'DBplus03', 'Anime');
+	if(mysqli_connect_errno())
+	{
+		echo "Failed to connect ". mysql_connect_error();
+	}
+?>
+
+<html>
+<head>
+	<title>CS411 DB+</title>
+</head>
+<body>
+	<h1>CS411 Group3 DB+ </h1>
+	<h2>This page is for demo purpose only 123123</h2>
+	<h2>Team members: Yanli Qian, Lihao Yu, Zhichun Wan, Rui Lan </h2>
+	<h2>The page is under construction. </h2> 
+	<?php  
+		$query = "select name from anime";
+		
+		mysqli_query($db, $query) or die('error q db');
+		
+		$result = mysqli_query($db, $query);
+		$row = mysqli_fetch_array($result);
+
+		while($row = mysqli_fetch_array($result)) {
+			echo $row['name']; 
+		}
+	?>
+	<h1><a href= test.php>To table page</a></h1>
+</body>
+</html>
