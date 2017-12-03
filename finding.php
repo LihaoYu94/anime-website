@@ -8,6 +8,7 @@ $db = mysqli_connect($servername, $username, $password, $database);
 if (mysqli_connect_errno()){
     echo "Database connection failed: " . mysqli_connect_error();
 }
+session_start();
 ?>
 
 
@@ -42,12 +43,15 @@ if (mysqli_connect_errno()){
 
       <div id="menubar">
         <ul id="menu">
-          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on -->
+          <!-- put class="selected" in the li tag for the selected page - to highlight which page you're on 
           <li><a href="index.html">Home</a></li>
           <li><a href="login.php">Profile</a></li>
           <li class="selected"><a href="finding.php">Content Page</a></li>
           <li><a href = "chat.php">Chat</a></li>
-           <li><a href = "rec.php">Recommendation</a></li>
+          <li><a href = "rec.php">Recommendation</a></li> -
+          <li><a href="login.php">Profile</a></li>-->
+          <li class="selected"><a href="finding.php">Admin page</a></li>
+
         </ul>
       </div>
 
@@ -155,7 +159,7 @@ if (mysqli_connect_errno()){
        </table>
 
   
-        <h2>Delete</h2>
+        <h2>Delete By Anime Name</h2>
         <form action="/finding.php" method="get">
          <input type="text" name="name" value=""><br>
          <input type="submit" name="Submit2">
@@ -205,7 +209,15 @@ if (mysqli_connect_errno()){
 	        }
        	  ?>
 
-
+        <form action="/login.php" method="get">
+          <br> <br> <br>
+        <input type="submit" name="Submit4", value = "Log out"><br>
+        </form>
+        <?php
+          if(isset($_GET["Submit4"])){
+            $_SESSION["login"] = 0;
+          }
+        ?>
 	
 
 
