@@ -86,14 +86,24 @@ if (mysqli_connect_errno()){
             echo "Here are what you may interested in: ";
             //echo $user_id;
             #$user_id = 8;
-            $view = "CREATE VIEW Getrec AS SELECT A.anime_id as anime_id, U.user_id as user_id from user U, rating R, anime A where U.user_id=R.user_id and R.anime_id=A.anime_id order by R.rating desc limit 1"; 
+
+            $view = "CREATE VIEW Getrec AS select A.anime_id,  U.user_id as user_id, max(R.rating) from user U, rating R, anime A where U.user_id=R.user_id and R.anime_id=A.anime_id group by U.user_id"; 
             mysqli_query($db, $view);
 
-            $search = "SELECT * from Getrec where user_id = '$user_id'";
+            // $search = "SELECT A.anime_id as anime_id
+            //  from user U, rating R, anime A  where U.user_id = '$user_id' AND U.user_id = R.user_id and R.anime_id=A.anime_id 
+            //  order by R.rating desc limit 1";
+
+            $search = "SELECT *
+             from Getrec where user_id = '$user_id'";
 
            // mysqli_query($db,$search) or die('Error querying database.!');
             $result = mysqli_query($db, $search);
             $row = mysqli_fetch_array($result);
+
+
+            $drop = "DROP VIEW Getrec"; 
+            mysqli_query($db, $drop);
             //echo $row[0];
             // while( ){
             //   echo $row[0];
@@ -111,14 +121,9 @@ if (mysqli_connect_errno()){
             // echo "php: " . $output[1];
             // echo "php: " . $output[2];
 
-            $time_start = microtime(true);
-            $recom = "SELECT * FROM anime WHERE anime_id = $output[0] or anime_id = $output[1] or anime_id = $output[2]"; 
-            //mysqli_query($db,$recom) or die('Error querying database.!');
-            $recresult = mysqli_query($db, $recom);
+            $recom = "SELECT * FROM anime WHERE anime_id = '$output[0]' or anime_id = '$output[1]' or anime_id = '$output[2]'"; 
+            $resultf = mysqli_query($db,$recom) or die('Error querying database.!');
 
-            $time_end = microtime(true);
-            $time = $time_end - $time_start;
-            echo "time: " . $time;
           ?> 
 
           <table style ='width:100%'>
@@ -130,7 +135,7 @@ if (mysqli_connect_errno()){
              <th>Episodes</th>
              <th>Rating</th>
          </tr>
-         <?php while( $recrow = mysqli_fetch_array($recresult)): ?>
+         <?php while( $recrow = mysqli_fetch_array($resultf)): ?>
          <tr>
             <td><?php echo $recrow['anime_id']; ?></td>
             <td><?php echo $recrow['name']; ?></td>
