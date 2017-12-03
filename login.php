@@ -64,7 +64,7 @@ session_start();
 
           <form action="/login.php" method="get">
             Create User Name<br><input type="text" name="name" value=""> <br>
-            Create Password<br><input type="text" name="password" value=""> <br>
+            Create Password<br><input type="password" name="password" value=""> <br>
             <input type="submit" name="register"> <br>
           </form> 
 
@@ -126,7 +126,7 @@ session_start();
 
           <form action="/login.php" method="get">
             User Name<br><input type="text" name="name" value=""> <br>
-            Password<br><input type="text" name="password" value=""> <br>
+            Password<br><input type="password" name="password" value=""> <br>
             <input type="submit" name="login" value="Log in"> <br>
           </form>
 
@@ -165,6 +165,10 @@ session_start();
                   $_SESSION["userid"] = $userid;
                   $_SESSION["username"] = $name;
                   echo " Login successful! Exciting!";
+                  if($_SESSION["username"] == "admin"){
+                    header("Location:finding.php");
+                  }
+                  header("Refresh:0");
                 }
 
             }
@@ -190,6 +194,7 @@ session_start();
     <?php  
     if(isset($_GET['logout'])) {
       $_SESSION["login"] = 0;
+      header("Refresh:0");
     }} ?>
 
     
