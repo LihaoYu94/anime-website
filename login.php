@@ -63,9 +63,17 @@ session_start();
          <h2>Register</h2>
 
           <form action="/login.php" method="get">
-            Create User Name<br><input type="text" name="name" value=""> <br>
+
+<!--             Create User Name<br><input type="text" name="name" value=""> <br>
             Create Password<br><input type="password" name="password" value=""> <br>
-            <input type="submit" name="register"> <br>
+            <input type="submit" name="register"> <br> -->
+
+                      <div class="form_settings">
+
+          <p><span>New Name</span><input type="text" name="name" value="" /></p>
+          <p><span>Create Password</span><input type="text" name="password" value="" /></p>
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="register" value="Register Me!" /></p >
+        </div>
           </form> 
 
           
@@ -125,9 +133,18 @@ session_start();
          <h2>Log In</h2>
 
           <form action="/login.php" method="get">
-            User Name<br><input type="text" name="name" value=""> <br>
+<!--             User Name<br><input type="text" name="name" value=""> <br>
             Password<br><input type="password" name="password" value=""> <br>
-            <input type="submit" name="login" value="Log in"> <br>
+            <input type="submit" name="login" value="Log in"> <br> -->
+
+
+            <div class="form_settings">
+
+          <p><span>User Name</span><input type="text" name="name" value="" /></p>
+          <p><span>Password</span><input type="password" name="password" value="" /></p>
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="login" value="Log in!" /></p >
+        </div>
+
           </form>
 
 

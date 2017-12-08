@@ -63,9 +63,17 @@ if (mysqli_connect_errno()){
         <h2>Rate an Anime</h2>
 
          <form action="/rating.php" method="get">
-           Anime Name to Insert<br><input type="text" name="name" value=""> <br>
+          <!--  Anime Name to Insert<br><input type="text" name="name" value=""> <br>
            Rating<br><input type="text" name="rating" value=""> <br>
-           <input type="submit" name="Submit">
+           <p style="padding-top: 15px"><span>&nbsp;</span><input class="submit" type="submit" name="Submit" value="button" /></p > -->
+           <!--<input type="submit" name="Submit">-->
+
+          <div class="form_settings">
+
+          <p><span>Anime Name to Rate</span><input type="text" name="name" value="" /></p>
+          <p><span>Your Rating</span><input type="text" name="rating" value="" /></p>
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="Submit" value="Insert!" /></p >
+        </div>
          </form>
 
           <?php
@@ -106,47 +114,17 @@ if (mysqli_connect_errno()){
          ?>
 
   
-        <h2>Delete My Rating</h2>
-        <form action="/rating.php" method="get">
-          Anime Name to Delete<br>
-         <input type="text" name="name" value=""><br>
-         <input type="submit" name="Submit2">
-        </form>
-
-        <?php
-        if(isset($_GET['Submit2'])){
-          $name = $_GET['name'];
-          $_GET['Submit2'] = NULL;
-
-
-          session_start();
-          $userid = $_SESSION["userid"];
-          //echo $userid;
-          $name = $_GET['name'];
-
-          //$rating = $_GET['rating'];
-          $getaid = "SELECT anime_id FROM anime WHERE name = '$name'";
-
-          $result = mysqli_query($db, $getaid);
-          $anime_id = mysqli_fetch_array($result);
-
-          $delete = "DELETE FROM rating 
-          WHERE anime_id = '$anime_id[0]' and user_id = '$userid'";
-
-          if ($db->query($delete)==TRUE) {
-          echo "The record deleted successfully.";
-
-          } else {
-          echo "Error: " . $sql . "<br>" . $db->error;
-          } 
-        } 
-        ?>
 
         <h2>Update My Rating</h2>
 	        <form action="/rating.php" method="get">
-          Anime Name to Update<br><input type="text" name="name" value=""><br>
+            <div class="form_settings">
+<!--           Anime Name to Update<br><input type="text" name="name" value=""><br>
           Rating to Change<br><input type="text" name="rating"><br>
-          <input type="submit" name="Submit3"><br>
+          <input type="submit" name="Submit3"><br> -->
+          <p><span>Anime Name to Rate</span><input type="text" name="name" value="" /></p>
+          <p><span>Your New Rating</span><input type="text" name="rating" value="" /></p>
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="Submit3" value="Update!" /></p >
+        </div>
           </form>
 
 	        <?php
@@ -181,6 +159,46 @@ if (mysqli_connect_errno()){
 
 
 
+        <h2>Delete My Rating</h2>
+        <form action="/rating.php" method="get">
+<!--           Anime Name to Delete<br>
+         <input type="text" name="name" value=""><br>
+         <input type="submit" name="Submit2"> -->
+         <div class="form_settings">
+
+          <p><span>Anime Name to Delete</span><input type="text" name="name" value="" /></p>
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="Submit2" value="Delete!" /></p >
+        </div>
+        </form>
+
+        <?php
+        if(isset($_GET['Submit2'])){
+          $name = $_GET['name'];
+          $_GET['Submit2'] = NULL;
+
+
+          session_start();
+          $userid = $_SESSION["userid"];
+          //echo $userid;
+          $name = $_GET['name'];
+
+          //$rating = $_GET['rating'];
+          $getaid = "SELECT anime_id FROM anime WHERE name = '$name'";
+
+          $result = mysqli_query($db, $getaid);
+          $anime_id = mysqli_fetch_array($result);
+
+          $delete = "DELETE FROM rating 
+          WHERE anime_id = '$anime_id[0]' and user_id = '$userid'";
+
+          if ($db->query($delete)==TRUE) {
+          echo "The record deleted successfully.";
+
+          } else {
+          echo "Error: " . $sql . "<br>" . $db->error;
+          } 
+        } 
+        ?>
 
 
 
@@ -188,13 +206,20 @@ if (mysqli_connect_errno()){
         <h2>Get Anime Info</h2>
 
          <form action="/rating.php" method="get">
-           Attribute<br>
+          <div class="form_settings">
+<!--            Attribute<br>
            <input type="text" name="attr" value=""><br>
            Value<br>
            <input type="text" name="cond" value=""><br>
            Precise Search?<br>
            <input type="text" name="prec" value=""><br>
-           <input type="submit" name="Submit1">
+           <input type="submit" name="Submit1"> -->
+
+           <p><span>Attribute</span><input type="text" name="attr" value="" /></p>
+           <p><span>Value</span><input type="text" name="cond" value="" /></p>
+           <p><span>Want Precise Search?</span><input type="text" name="prec" value="" /></p>
+           <p style="padding-top: 5px" align="left"><!-- <span></span> --><input class="submit" type="submit" name="Submit1" value="Get Info!" /></p >
+         </div>
          </form>
 
           <?php
@@ -246,9 +271,17 @@ if (mysqli_connect_errno()){
         <h2>Want to know how many people like this anime? </h2>
 
          <form action="/rating.php" method="get">
-           Anime<br>
-           <input type="text" name="name" value=""><br>
-           <input type="submit" name="Submit10">
+           <!-- Anime -->
+           <!-- <input type="text" name="name" value=""><br> -->
+           <!-- <form action="#" method="post"> -->
+
+
+           <!--<input type="submit" name="Submit10">-->
+	   <div class="form_settings">
+      <p><span>Anime to explore</span><input type="text" name="name" value="" /></p>
+	     <p style="padding-top: 5px" align="left"><!-- <span></span> --><input class="submit" type="submit" name="Submit10" value="Submit!" /></p >
+	   </div>
+
          </form>
 
          <?php
@@ -307,7 +340,10 @@ if (mysqli_connect_errno()){
         <h2>See what's the most popular (TOP 20) anime! </h2>
 
          <form action="/rating.php" method="get">
-           <input type="submit" name="Submit11">
+          <div class="form_settings">
+           <p style="padding-top: 5px" align="left"><!-- <span></span> --><input class="submit" type="submit" name="Submit11" value="Get Top 20!" /></p >
+         </div>
+           <!-- <input type="submit" name="Submit11"> -->
          </form>
 
          <?php

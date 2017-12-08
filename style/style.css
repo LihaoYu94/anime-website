@@ -25,7 +25,7 @@ h1, h2, h3, h4, h5, h6
 
 h2
 { font: normal 165% 'century gothic', arial, sans-serif;
-  color: #B60000;}
+  color: #008080;}
 
 h3
 { font: normal 165% 'century gothic', arial, sans-serif;}
@@ -108,12 +108,12 @@ ol li
 #logo h1
 { padding: 24px 0 0 0;
   margin: 0;
-  color: #2DB8CD;}
+  color: #008080;}
 
 #logo h2
 { font-size: 120%;
   padding: 4px 0 0 0;
-  color: #A8AA94;}
+  color: #ffffff;}
 
 #logo h1, #logo h1 a, #logo h1 a:hover 
 { padding: 22px 0 0 0;
@@ -232,8 +232,16 @@ ul#menu li a:hover
 
 .form_settings span
 { float: left; 
-  width: 200px; 
+  width: 1000px; 
   text-align: left;}
+  
+/*.form_settings input, .form_settings textarea
+{ padding: 0px; 
+  width: 2px; 
+  font: 100% arial; 
+  border: 1px solid #E5E5DB; 
+  background: #FFF; 
+  color: #FF0000;}*/
   
 .form_settings input, .form_settings textarea
 { padding: 5px; 
@@ -242,16 +250,29 @@ ul#menu li a:hover
   border: 1px solid #E5E5DB; 
   background: #FFF; 
   color: #47433F;}
-  
+
+
+
+/*.form_settings .submit
+{ font: 100% arial; 
+  border: 0; 
+  width: 99px; 
+  margin: 0 0 0 2px; 
+  height: 33px;
+  padding: 2px 0 3px 0;
+  cursor: pointer; 
+  background: #FF5733; 
+  color: #000;}*/
+
 .form_settings .submit
 { font: 100% arial; 
   border: 0; 
   width: 99px; 
-  margin: 0 0 0 212px; 
+  margin: 0 0 0 0; 
   height: 33px;
   padding: 2px 0 3px 0;
   cursor: pointer; 
-  background: #3B3B3B; 
+  background: #ADD8E6; 
   color: #FFF;}
 
 .form_settings textarea, .form_settings select
@@ -279,13 +300,13 @@ table
 { margin: 10px 0 30px 0;}
 
 table tr th, table tr td
-{ background: #3B3B3B;
+{ background: #53d4d6;
   color: #FFF;
   padding: 7px 4px;
   text-align: left;}
   
 table tr td
 { background: #E5E5DB;
-  color: #47433F;
+  color: #53d4d6;
   border-top: 1px solid #FFF;}
 

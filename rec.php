@@ -70,7 +70,14 @@ if (mysqli_connect_errno()){
 
          <form action="/rec.php" method="get">
            <!--<input type="button" value="Give me some!" name = "Submit" onclick="location='rec.php'" />-->
-           <input type="submit" name="Submit" value="Give me some!">
+<!--            <input type="submit" name="Submit" value="Give me some!">
+ -->
+           <div class="form_settings">
+
+<!--           <p><span>New Name</span><input type="text" name="name" value="" /></p>
+          <p><span>Create Password</span><input type="text" name="password" value="" /></p> -->
+          <p style="padding-top: 5px" align="left"><input class="submit" type="submit" name="Submit" value="Give me some!" /></p >
+        </div>
          </form>
          <script> var userid = localStorage.getItem("userid"); </script>
          
